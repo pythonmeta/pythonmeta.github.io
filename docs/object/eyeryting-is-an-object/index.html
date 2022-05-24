@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Python is a clear and powerful object-oriented programming language, comparable to Perl, Ruby, Scheme, or Java. [1]
+ 从官方对Python的介绍中可知，Python是一门可与Perl、Ruby、Scheme、Java等相媲美的面向对象的编程语言。可见，Python从设计之初就是一门面向对象的语言。而且，相较于Java等面向对象的编程语言，Python的面向对象的思想贯彻地更彻底。
+对象的三个特性 #  在Python中，所有对象都拥有以下三个特性：
+  唯一身份（unique identity）
+每个对象都有一个唯一的身份标识自己，在对象创建后就不可被修改。在CPython中，使用对象的内存地址作为对象的唯一身份。
+我们可以通过Python内置函数id()来获取对象的身份ID。
+&gt;&gt;&gt; n = 10&gt;&gt;&gt; id(n)3007271168592  类型（type）
+对象的类型决定了对象拥有的属性和方法，可以进行的操作等。同样的，对象的类型也是不可更改的。
+我们可以通过Python内置函数type()来获取对象的类型。
+&gt;&gt;&gt; n = 10&gt;&gt;&gt; type(10)&lt;class &#39;int&#39;&gt;  值（value）
+对象的值是对象所表示的数据或内容。
+对象的类型决定了对象的值是否可被修改。值可被修改的对象，称为可变对象（mutable），值不可被修改的对象，称为不可变对象（immutable）。
+  对象的名称 #  在Python中，对象的名称有一定的特殊性，它不属于对象的特征，而对象本身也不知道它自己叫什么名字。
+理解对象名称需要我们把握好以下几个要点：
+  名称不是对象的固有特征，一个对象可以有任意多个名称，也可以没有名称。
+  Python的命名空间（namespace）管理着对象名称和对象的映射关系。
+命名空间可理解为一个字典，其中字典的键是对象的名称（变量名），而字典的值是对象本身。这样，通过对象的名称（变量名）就可以索引对象本身了。
+  赋值语句修改的是命名空间中对象名称（变量名）和对象本身的映射关系，而不是修改对象本身。">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="一切皆对象" />
+<meta property="og:description" content="Python is a clear and powerful object-oriented programming language, comparable to Perl, Ruby, Scheme, or Java. [1]
+ 从官方对Python的介绍中可知，Python是一门可与Perl、Ruby、Scheme、Java等相媲美的面向对象的编程语言。可见，Python从设计之初就是一门面向对象的语言。而且，相较于Java等面向对象的编程语言，Python的面向对象的思想贯彻地更彻底。
+对象的三个特性 #  在Python中，所有对象都拥有以下三个特性：
+  唯一身份（unique identity）
+每个对象都有一个唯一的身份标识自己，在对象创建后就不可被修改。在CPython中，使用对象的内存地址作为对象的唯一身份。
+我们可以通过Python内置函数id()来获取对象的身份ID。
+&gt;&gt;&gt; n = 10&gt;&gt;&gt; id(n)3007271168592  类型（type）
+对象的类型决定了对象拥有的属性和方法，可以进行的操作等。同样的，对象的类型也是不可更改的。
+我们可以通过Python内置函数type()来获取对象的类型。
+&gt;&gt;&gt; n = 10&gt;&gt;&gt; type(10)&lt;class &#39;int&#39;&gt;  值（value）
+对象的值是对象所表示的数据或内容。
+对象的类型决定了对象的值是否可被修改。值可被修改的对象，称为可变对象（mutable），值不可被修改的对象，称为不可变对象（immutable）。
+  对象的名称 #  在Python中，对象的名称有一定的特殊性，它不属于对象的特征，而对象本身也不知道它自己叫什么名字。
+理解对象名称需要我们把握好以下几个要点：
+  名称不是对象的固有特征，一个对象可以有任意多个名称，也可以没有名称。
+  Python的命名空间（namespace）管理着对象名称和对象的映射关系。
+命名空间可理解为一个字典，其中字典的键是对象的名称（变量名），而字典的值是对象本身。这样，通过对象的名称（变量名）就可以索引对象本身了。
+  赋值语句修改的是命名空间中对象名称（变量名）和对象本身的映射关系，而不是修改对象本身。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://pythonmeta.github.io/docs/object/eyeryting-is-an-object/" /><meta property="article:section" content="docs" />
+
+
+
+<title>一切皆对象 | Python Meta</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.82c5dbd23447cee0b4c2aa3ed08ce0961faa40e1fa370eee4f8c9f02e0d46b5f.css" integrity="sha256-gsXb0jRHzuC0wqo&#43;0Izglh&#43;qQOH6Nw7uT4yfAuDUa18=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.5c8e5859846fdaf75ca17e964d1eb9dbb81c44c93b4addc8c6ef69f2137cfb06.js" integrity="sha256-XI5YWYRv2vdcoX6WTR6527gcRMk7St3Ixu9p8hN8&#43;wY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>Python Meta</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <span>Python对象</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://pythonmeta.github.io/docs/object/eyeryting-is-an-object/" class=" active">一切皆对象</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>一切皆对象</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#对象的三个特性">对象的三个特性</a></li>
+    <li><a href="#对象的名称">对象的名称</a></li>
+    <li><a href="#一切皆对象">一切皆对象</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><blockquote>
+<p><em>Python is a clear and powerful object-oriented programming language, comparable to Perl, Ruby, Scheme, or Java. [1]</em></p>
+</blockquote>
+<p>从官方对Python的介绍中可知，Python是一门可与Perl、Ruby、Scheme、Java等相媲美的<strong>面向对象</strong>的编程语言。可见，Python从设计之初就是一门面向对象的语言。而且，相较于Java等面向对象的编程语言，Python的面向对象的思想贯彻地更彻底。</p>
+<h2 id="对象的三个特性">
+  对象的三个特性
+  <a class="anchor" href="#%e5%af%b9%e8%b1%a1%e7%9a%84%e4%b8%89%e4%b8%aa%e7%89%b9%e6%80%a7">#</a>
+</h2>
+<p>在Python中，所有对象都拥有以下三个特性：</p>
+<ul>
+<li>
+<p>唯一身份（<strong>unique identity</strong>）</p>
+<p>每个对象都有一个唯一的身份标识自己，在对象创建后就不可被修改。在CPython中，使用对象的内存地址作为对象的唯一身份。</p>
+<p>我们可以通过Python内置函数<code>id()</code>来获取对象的身份ID。</p>
+<pre tabindex="0"><code>&gt;&gt;&gt; n = 10
+&gt;&gt;&gt; id(n)
+3007271168592
+</code></pre></li>
+<li>
+<p>类型（<strong>type</strong>）</p>
+<p>对象的类型决定了对象拥有的属性和方法，可以进行的操作等。同样的，对象的类型也是不可更改的。</p>
+<p>我们可以通过Python内置函数<code>type()</code>来获取对象的类型。</p>
+<pre tabindex="0"><code>&gt;&gt;&gt; n = 10
+&gt;&gt;&gt; type(10)
+&lt;class 'int'&gt;
+</code></pre></li>
+<li>
+<p>值（<strong>value</strong>）</p>
+<p>对象的值是对象所表示的数据或内容。</p>
+<p>对象的类型决定了对象的值是否可被修改。值可被修改的对象，称为可变对象（<strong>mutable</strong>），值不可被修改的对象，称为不可变对象（<strong>immutable</strong>）。</p>
+</li>
+</ul>
+<h2 id="对象的名称">
+  对象的名称
+  <a class="anchor" href="#%e5%af%b9%e8%b1%a1%e7%9a%84%e5%90%8d%e7%a7%b0">#</a>
+</h2>
+<p>在Python中，对象的名称有一定的特殊性，它不属于对象的特征，而对象本身也不知道它自己叫什么名字。</p>
+<p>理解对象名称需要我们把握好以下几个要点：</p>
+<ul>
+<li>
+<p>名称不是对象的固有特征，一个对象可以有任意多个名称，也可以没有名称。</p>
+<p><img src="object-names.png" alt="" /></p>
+</li>
+<li>
+<p>Python的命名空间（<strong>namespace</strong>）管理着对象名称和对象的映射关系。</p>
+<p>命名空间可理解为一个字典，其中字典的键是对象的名称（变量名），而字典的值是对象本身。这样，通过对象的名称（变量名）就可以索引对象本身了。</p>
+<p><img src="object-names-in-namespace.png" alt="" /></p>
+</li>
+<li>
+<p>赋值语句修改的是命名空间中对象名称（变量名）和对象本身的映射关系，而不是修改对象本身。</p>
+<p><img src="assignment.png" alt="" /></p>
+</li>
+</ul>
+<h2 id="一切皆对象">
+  一切皆对象
+  <a class="anchor" href="#%e4%b8%80%e5%88%87%e7%9a%86%e5%af%b9%e8%b1%a1">#</a>
+</h2>
+<blockquote>
+<p><em>One of my goals for Python was to make it so that all objects were “first class.” By this, I meant that I wanted all objects that could be named in the language (e.g., integers, strings, functions, classes, modules, methods, etc.) to have equal status. That is, they can be assigned to variables, placed in lists, stored in dictionaries, passed as arguments, and so forth.</em> [2]</p>
+<p>Guido van Rossum</p>
+</blockquote>
+<p>在Python中，<strong>一切皆对象</strong>。正如Python之父<em>Guido van Rossum</em>所解释的，在Python中，整数、字符串、函数、类、模块、方法等通通都是对象，具有同等的地位。也就是说，可以将它们分配给变量、放置在列表中、存储在字典中、作为参数传递等等。</p>
+<p>我们可以从前两节的内容来说明一切皆对象的内涵：</p>
+<ul>
+<li>
+<p>无论是内置类型、函数、类等都是对象，拥有对象的三个特性。</p>
+<p><img src="example.png" alt="" /></p>
+</li>
+<li>
+<p>对象名称（变量名）只是对象的索引，赋值操作修改的是对象名称（变量名）和对象的映射关系。因此，这就允许我们把对象赋值给任意变量名、当作参数传递、从函数中返回对象等。</p>
+<p><img src="example_args.png" alt="" /></p>
+</li>
+</ul>
+<p>理解好Python对象的三个特性，以及对象名称和对象的关系，就比较容易理解Python中<strong>一切皆对象</strong>的含义了。</p>
+<p>[1] <a href="https://wiki.python.org/moin/BeginnersGuide/Overview">https://wiki.python.org/moin/BeginnersGuide/Overview</a></p>
+<p>[2] <a href="http://python-history.blogspot.com/2009/02/first-class-everything.html">http://python-history.blogspot.com/2009/02/first-class-everything.html</a></p>
+<blockquote class="book-hint danger">
+  转载或者引用本文内容请注明来源。
+</blockquote>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#对象的三个特性">对象的三个特性</a></li>
+    <li><a href="#对象的名称">对象的名称</a></li>
+    <li><a href="#一切皆对象">一切皆对象</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python对象 on Python Meta</title>
+    <link>https://pythonmeta.github.io/docs/object/</link>
+    <description>Recent content in Python对象 on Python Meta</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language><atom:link href="https://pythonmeta.github.io/docs/object/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一切皆对象</title>
+      <link>https://pythonmeta.github.io/docs/object/eyeryting-is-an-object/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pythonmeta.github.io/docs/object/eyeryting-is-an-object/</guid>
+      <description>Python is a clear and powerful object-oriented programming language, comparable to Perl, Ruby, Scheme, or Java. [1]
+ 从官方对Python的介绍中可知，Python是一门可与Perl、Ruby、Scheme、Java等相媲美的面向对象的编程语言。可见，Python从设计之初就是一门面向对象的语言。而且，相较于Java等面向对象的编程语言，Python的面向对象的思想贯彻地更彻底。
+对象的三个特性 #  在Python中，所有对象都拥有以下三个特性：
+  唯一身份（unique identity）
+每个对象都有一个唯一的身份标识自己，在对象创建后就不可被修改。在CPython中，使用对象的内存地址作为对象的唯一身份。
+我们可以通过Python内置函数id()来获取对象的身份ID。
+&amp;gt;&amp;gt;&amp;gt; n = 10&amp;gt;&amp;gt;&amp;gt; id(n)3007271168592  类型（type）
+对象的类型决定了对象拥有的属性和方法，可以进行的操作等。同样的，对象的类型也是不可更改的。
+我们可以通过Python内置函数type()来获取对象的类型。
+&amp;gt;&amp;gt;&amp;gt; n = 10&amp;gt;&amp;gt;&amp;gt; type(10)&amp;lt;class &#39;int&#39;&amp;gt;  值（value）
+对象的值是对象所表示的数据或内容。
+对象的类型决定了对象的值是否可被修改。值可被修改的对象，称为可变对象（mutable），值不可被修改的对象，称为不可变对象（immutable）。
+  对象的名称 #  在Python中，对象的名称有一定的特殊性，它不属于对象的特征，而对象本身也不知道它自己叫什么名字。
+理解对象名称需要我们把握好以下几个要点：
+  名称不是对象的固有特征，一个对象可以有任意多个名称，也可以没有名称。
+  Python的命名空间（namespace）管理着对象名称和对象的映射关系。
+命名空间可理解为一个字典，其中字典的键是对象的名称（变量名），而字典的值是对象本身。这样，通过对象的名称（变量名）就可以索引对象本身了。
+  赋值语句修改的是命名空间中对象名称（变量名）和对象本身的映射关系，而不是修改对象本身。</description>
+    </item>
+    
+  </channel>
+</rss>
