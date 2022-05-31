@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python对象 on Python Meta</title>
+    <title>Python对象 on Python M</title>
     <link>https://pythonmeta.github.io/docs/object/</link>
-    <description>Recent content in Python对象 on Python Meta</description>
+    <description>Recent content in Python对象 on Python M</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language><atom:link href="https://pythonmeta.github.io/docs/object/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -12,7 +12,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://pythonmeta.github.io/docs/object/eyeryting-is-an-object/</guid>
-      <description>Python is a clear and powerful object-oriented programming language, comparable to Perl, Ruby, Scheme, or Java. [1]
+      <description>转载或者引用本文内容请注明来源。   Python is a clear and powerful object-oriented programming language, comparable to Perl, Ruby, Scheme, or Java. [1]
  从官方对Python的介绍中可知，Python是一门可与Perl、Ruby、Scheme、Java等相媲美的面向对象的编程语言。可见，Python从设计之初就是一门面向对象的语言。而且，相较于Java等面向对象的编程语言，Python的面向对象的思想贯彻地更彻底。
 对象的三个特性 #  在Python中，所有对象都拥有以下三个特性：
   唯一身份（unique identity）
@@ -27,9 +27,22 @@
   对象的名称 #  在Python中，对象的名称有一定的特殊性，它不属于对象的特征，而对象本身也不知道它自己叫什么名字。
 理解对象名称需要我们把握好以下几个要点：
   名称不是对象的固有特征，一个对象可以有任意多个名称，也可以没有名称。
-  Python的命名空间（namespace）管理着对象名称和对象的映射关系。
-命名空间可理解为一个字典，其中字典的键是对象的名称（变量名），而字典的值是对象本身。这样，通过对象的名称（变量名）就可以索引对象本身了。
-  赋值语句修改的是命名空间中对象名称（变量名）和对象本身的映射关系，而不是修改对象本身。</description>
+  Python的命名空间（namespace）管理着对象名称和对象的映射关系。</description>
+    </item>
+    
+    <item>
+      <title>不可变对象 vs 可变对象</title>
+      <link>https://pythonmeta.github.io/docs/object/im-mutable-object/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pythonmeta.github.io/docs/object/im-mutable-object/</guid>
+      <description>转载或者引用本文内容请注明来源。  在《一切皆对象》一章中，我们知道对象拥有唯一身份（identity）、类型（type）和值（value）三个特性，其中对象的身份和类型是不可被修改的，而对象的类型决定了对象的值是否可被修改。
+我们按照对象的值是否可被修改，可以将对象分为不可变对象（immutable）和可变对象（mutable）。
+不可变对象（immutable） #  值不可被修改的对象，称为不可变对象（immutable）。
+比如int, float, bool, string, tuple等内置类型就是不可变对象。任何修改不可变对象值的尝试，都会抛出异常（&amp;lsquo;xxx&amp;rsquo; object does not support item assignment）。
+&amp;gt;&amp;gt;&amp;gt; warn = &#39;Immutable object can’t be changed.&#39; &amp;gt;&amp;gt;&amp;gt; warn[0] = &#39;W&#39; Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; TypeError: &#39;str&#39; object does not support item assignment 可变对象（mutable） #  值可被修改的对象，称为可变对象（mutable）。
+比如list, dict, set等内置类型就是可变对象。
+&amp;gt;&amp;gt;&amp;gt; students = [&#39;Tom&#39;, &#39;Jerry&#39;, &#39;Jacob&#39;] &amp;gt;&amp;gt;&amp;gt; students[0] = &#39;Mia&#39; &amp;gt;&amp;gt;&amp;gt; students [&#39;Mia&#39;, &#39;Jerry&#39;, &#39;Jacob&#39;] 编程建议 #   优先使用不可变对象，在需要改变变量的场景时才使用可变对象。 作为函数参数时，建议使用不可变对象。  </description>
     </item>
     
   </channel>
